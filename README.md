@@ -1,5 +1,5 @@
 # news_sent
-The purpose of this project is to provided sentiment analysis over news collected from Google. 
+The purpose of this project is to provide sentiment analytics over news collected from Google. 
 
 ### download_google_news.py
 Downloads latest news for the past 2 days. Displays a tiny report of the collected news data.
