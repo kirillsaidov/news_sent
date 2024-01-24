@@ -41,8 +41,10 @@ scap news data
 
 # links
 google_links = [
-    'https://www.google.com/search?q=bitcoin&num=100&sca_esv=600189765&gl=us&tbas=0&tbs=sbd:1&tbm=nws&ei=eNWsZaraE4C79u8P2PmHgAM&start=0&sa=N&ved=2ahUKEwiq9qzih-6DAxWAnf0HHdj8ATAQ8tMDegQIARAE&biw=941&bih=978&dpr=1'
-    # 'https://www.google.com/search?q=bitcoin&num=100&sca_esv=600189765&gl=us&tbas=0&tbs=sbd:1&tbm=nws&ei=eNWsZaraE4C79u8P2PmHgAM&start=100&sa=N&ved=2ahUKEwiq9qzih-6DAxWAnf0HHdj8ATAQ8tMDegQIARAE&biw=941&bih=978&dpr=1'
+    'https://www.google.com/search?q=bitcoin&num=100&sca_esv=600189765&gl=us&tbas=0&tbs=sbd:1&tbm=nws&ei=nSqxZaPZMs3_7_UP5rKLkAQ&start=0&sa=N&ved=2ahUKEwjjm5vEqfaDAxXN_7sIHWbZAkI4ZBDy0wN6BAgEEAQ&biw=1872&bih=978&dpr=1',
+    'https://www.google.com/search?q=bitcoin&num=100&sca_esv=600189765&gl=us&tbas=0&tbs=sbd:1&tbm=nws&ei=eNWsZaraE4C79u8P2PmHgAM&start=100&sa=N&ved=2ahUKEwiq9qzih-6DAxWAnf0HHdj8ATAQ8tMDegQIARAE&biw=941&bih=978&dpr=1',
+    'https://www.google.com/search?q=bitcoin&num=100&sca_esv=600189765&gl=us&tbas=0&tbs=sbd:1&tbm=nws&ei=eNWsZaraE4C79u8P2PmHgAM&start=200&sa=N&ved=2ahUKEwiq9qzih-6DAxWAnf0HHdj8ATAQ8tMDegQIARAE&biw=941&bih=978&dpr=1',
+    'https://www.google.com/search?q=bitcoin&num=100&sca_esv=600189765&gl=us&tbas=0&tbs=sbd:1&tbm=nws&ei=eNWsZaraE4C79u8P2PmHgAM&start=300&sa=N&ved=2ahUKEwiq9qzih-6DAxWAnf0HHdj8ATAQ8tMDegQIARAE&biw=941&bih=978&dpr=1',
 ]
 
 # get htmls
@@ -53,7 +55,8 @@ for link in google_links:
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36"
     }
     response = requests.get(link, headers=headers)
-    google_htmls.append(response.content)
+    if response.status_code == 200:
+        google_htmls.append(response.content)
     
 # parse htmls
 google_news = []
@@ -80,7 +83,7 @@ for html in google_htmls:
             google_news.append(entry)
         
         # count            
-        published_today = published_today + int(daydiff < 1)
+        published_today = published_today + int(daydiff == 0)
 
 
 """
