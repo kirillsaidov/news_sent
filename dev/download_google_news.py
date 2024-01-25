@@ -81,9 +81,9 @@ for html in google_htmls:
         daydiff = abs((datetime_now - pub_date).days)
         if daydiff < 2:
             google_news.append(entry)
-        
+                
         # count            
-        published_today = published_today + int(daydiff == 0)
+        published_today = published_today + int(pub_date.date() == datetime_now.date())
 
 
 """
