@@ -61,7 +61,7 @@ if __name__ == '__main__':
     print('------------------------------')
     for counts_ in counts:
         print(f'REPORT: {counts_["date"]}')
-        for key, value in counts_.items():
+        for key, value in sorted(counts_.items()):
             if key == 'date': 
                 continue
             print(f' - [ {value[0]:3d} | {value[1]:.2f}% ] {key}')                    
