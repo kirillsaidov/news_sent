@@ -15,7 +15,7 @@ prep
 """
 
 def get_timedelta(delta: str):
-    delta_split = delta.split(' ')
+    delta_split = delta.lower().replace('live', '').split(' ')
     delta_num = delta_split[0]
     delta_unit = delta_split[1]
     if 'min' in delta_unit:
